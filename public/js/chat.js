@@ -18,6 +18,7 @@ function scrollToBottom () {
 
 socket.on('connect', function () {
   var params = jQuery.deparam(window.location.search);
+  //params.room = params.room.toLowerCase()
 
   socket.emit('join', params, function (err) {
     if (err) {
@@ -37,7 +38,11 @@ socket.on('updateUserList', function (users) {
   var ol = jQuery('<ol></ol>');
 
   users.forEach(function (user) {
-    ol.append(jQuery('<li></li>').text(user));
+    if (user.id === socket.id){
+      ol.append(jQuery('<li></li>').text(user.name+' (me)'));
+    }
+    
+    else ol.append(jQuery('<li></li>').text(user.name));
   });
 
   jQuery('#users').html(ol);

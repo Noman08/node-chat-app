@@ -32,24 +32,11 @@ class Users {
   }
   getUserList (room) {
     var users = this.users.filter((user) => user.room === room);
-    var namesArray = users.map((user) => user.name);
+    //var namesArray = users.map((user) => user.name);
 
-    return namesArray;
+    return users;
   }
 }
 
 module.exports = {Users};
 
- // class Person {
- //   constructor (name, age) {
- //     this.name = name;
- //     this.age = age;
- //   }
- //   getUserDescription () {
- //     return `${this.name} is ${this.age} year(s) old.`;
- //   }
- // }
- //
- // var me = new Person('Andrew', 25);
- // var description = me.getUserDescription();
- // console.log(description);
